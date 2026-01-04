@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PixelProof | Invisible Watermarking</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <p class="subtitle">Invisible watermarking technology</p>
+        </header>
+
+        <nav class="tabs">
+            <button class="tab-btn active" data-tab="embed">
+                <span class="tab-icon">✨</span> Embed Watermark
+            </button>
+            <button class="tab-btn" data-tab="verify">
+                <span class="tab-icon">🔍</span> Verify Image
+            </button>
+        </nav>
+
+        <main>
+            <!-- EMBED PORTAL -->
+            <section id="embed" class="portal active">
+                <div class="glass-card">
+                    <div class="dropzone" id="embed-dropzone">
+                        <div class="dropzone-content">
+                            <span class="drop-icon">📁</span>
+                            <p>Drag & Drop Image Here</p>
+                            <span class="file-info">or click to browse (PNG, JPG)</span>
+                            <input type="file" id="embed-file-input" accept="image/png, image/jpeg" hidden>
+                        </div>
+                        <div class="preview-container" id="embed-preview-container" style="display: none;">
+                            <img id="embed-preview" src="" alt="Preview">
+                            <button class="remove-btn" id="embed-remove-btn">×</button>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="secret-text">Custom Signature</label>
+                        <input type="text" id="secret-text" placeholder="Enter your secret watermark text..." autocomplete="off">
+                    </div>
+
+                    <button id="embed-btn" class="action-btn primary">
+                        <span class="btn-text">Secure & Download</span>
+                        <div class="loader" style="display: none;"></div>
+                    </button>
+                </div>
+            </section>
+
+            <!-- VERIFY PORTAL -->
+            <section id="verify" class="portal">
+                <div class="glass-card">
+                    <div class="dropzone" id="verify-dropzone">
+                        <div class="dropzone-content">
+                            <p>Drag & Drop Suspect Image</p>
+                            <span class="file-info">or click to browse</span>
+                            <input type="file" id="verify-file-input" accept="image/png, image/jpeg" hidden>
+                        </div>
+                         <div class="preview-container" id="verify-preview-container" style="display: none;">
+                            <img id="verify-preview" src="" alt="Preview">
+                             <button class="remove-btn" id="verify-remove-btn">×</button>
+                        </div>
+                    </div>
+
+                    <div class="status-display">
+                        <button id="verify-btn" class="action-btn secondary">
+                            <span class="btn-text">Scan for Watermark</span>
+                             <div class="loader" style="display: none;"></div>
+                        </button>
+                    </div>
+
+                    <div id="verify-result" class="result-card" style="display: none;">
+                        <!-- Results will be injected here -->
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <div id="toast-container"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
